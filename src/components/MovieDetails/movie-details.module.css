@@ -1,0 +1,13 @@
+.filmInfoTitle {
+    font-weight: bold;
+}
+
+.filmInfoWrapper {
+    margin-left: 10px;
+}
+
+.detailsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
