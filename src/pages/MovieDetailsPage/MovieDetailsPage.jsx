@@ -43,7 +43,9 @@ const MovieDetailsPage = () => {
 
       <button
         className={css.navigationBtn}
-        onClick={() => navigate(location.state?.from || '/')}
+        onClick={() =>
+          navigate(location.state?.from || '/goit-react-hw-05-movies')
+        }
         type="button"
       >
         Go back

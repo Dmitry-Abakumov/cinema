@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <ul className={css.menu}>
       <li>
-        <NavLink className={css.link} to="/">
+        <NavLink className={css.link} to="/goit-react-hw-05-movies">
           Home
         </NavLink>
       </li>
