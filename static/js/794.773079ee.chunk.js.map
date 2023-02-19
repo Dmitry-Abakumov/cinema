@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/794.773079ee.chunk.js","mappings":"2JAIA,UAJqB,WACnB,OAAO,wEACR,C","sources":["pages/NotFoundPage/NotFoundPage.jsx"],"sourcesContent":["const NotFoundPage = () => {\n  return <h1>Sorry, but there is no page at this address </h1>;\n};\n\nexport default NotFoundPage;\n"],"names":[],"sourceRoot":""}
