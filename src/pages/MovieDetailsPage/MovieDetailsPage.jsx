@@ -1,5 +1,5 @@
 import { useParams, useLocation, useNavigate, Outlet } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 
@@ -18,6 +18,8 @@ const MovieDetailsPage = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const prevLocation = useRef(location);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -44,7 +46,11 @@ const MovieDetailsPage = () => {
       <button
         className={css.navigationBtn}
         onClick={() =>
-          navigate(location.state?.from || '/goit-react-hw-05-movies')
+          navigate(
+            location.state?.from ||
+              prevLocation.current.state.from ||
+              '/goit-react-hw-05-movies'
+          )
         }
         type="button"
       >

@@ -35,7 +35,11 @@ const CastPage = () => {
         <TailSpin width="50" color="black" wrapperClass="spinner" />
       )}
 
-      <ActorsList cast={cast} />
+      {cast.length > 0 ? (
+        <ActorsList cast={cast} />
+      ) : (
+        <h2>Sorry, there is no information about the actors</h2>
+      )}
 
       {error && <p>{error}</p>}
     </>
