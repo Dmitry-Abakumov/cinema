@@ -7,7 +7,7 @@ import Reviews from 'components/Reviews/Reviews';
 import { fetchMovieReviews } from 'shared/services/movies-search-api';
 
 const RewiewsPage = () => {
-  const [reviews, setReviws] = useState([]);
+  const [reviews, setReviws] = useState();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,9 +35,9 @@ const RewiewsPage = () => {
         <TailSpin width="50" color="black" wrapperClass="spinner" />
       )}
 
-      {reviews.length > 0 ? (
-        <Reviews reviews={reviews} />
-      ) : (
+      <Reviews reviews={reviews} />
+
+      {reviews?.length === 0 && !isLoading && (
         <h2>Sorry, but there are no reviews for this movie.</h2>
       )}
 

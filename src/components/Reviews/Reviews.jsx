@@ -19,7 +19,7 @@ const Reviews = ({ reviews }) => {
 export default Reviews;
 
 Reviews.defaultProps = {
-  revews: [],
+  reviews: [],
 };
 
 Reviews.propTypes = {

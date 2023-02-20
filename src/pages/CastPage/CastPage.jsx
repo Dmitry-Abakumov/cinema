@@ -7,7 +7,7 @@ import ActorsList from 'components/ActorsList/ActorsList';
 import { fetchMovieCast } from 'shared/services/movies-search-api';
 
 const CastPage = () => {
-  const [cast, setCast] = useState([]);
+  const [cast, setCast] = useState();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,9 +35,9 @@ const CastPage = () => {
         <TailSpin width="50" color="black" wrapperClass="spinner" />
       )}
 
-      {cast.length > 0 ? (
-        <ActorsList cast={cast} />
-      ) : (
+      <ActorsList cast={cast} />
+
+      {cast?.length === 0 && !isLoading && (
         <h2>Sorry, there is no information about the actors</h2>
       )}
 

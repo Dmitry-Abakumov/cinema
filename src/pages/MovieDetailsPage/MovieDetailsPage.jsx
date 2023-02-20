@@ -19,7 +19,7 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const prevLocation = useRef(location);
+  const initialLocation = useRef(location);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -47,7 +47,7 @@ const MovieDetailsPage = () => {
         className={css.navigationBtn}
         onClick={() =>
           navigate(
-            location.state?.from || prevLocation.current.state.from || '/'
+            location.state?.from || initialLocation.current.state?.from || '/'
           )
         }
         type="button"
@@ -57,14 +57,10 @@ const MovieDetailsPage = () => {
       <MovieDetails movieInfo={movieDetails} />
       <ul>
         <li>
-          <Link to="cast" state={{ from: location }}>
-            Cast
-          </Link>
+          <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link to="reviews" state={{ from: location }}>
-            Reviews
-          </Link>
+          <Link to="reviews">Reviews</Link>
         </li>
       </ul>
       <Outlet />
