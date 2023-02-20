@@ -6,7 +6,10 @@ const Movies = ({ movies }) => {
 
   const moviesList = movies.map(({ id, original_title }) => (
     <li key={id}>
-      <Link to={`/movies/${id}`} state={{ from: location }}>
+      <Link
+        to={`/goit-react-hw-05-movies/movies/${id}`}
+        state={{ from: location }}
+      >
         {original_title}
       </Link>
     </li>

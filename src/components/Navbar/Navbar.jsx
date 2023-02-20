@@ -10,7 +10,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className={css.link} to="/movies">
+        <NavLink className={css.link} to="/goit-react-hw-05-movies/movies">
           Movies
         </NavLink>
       </li>
