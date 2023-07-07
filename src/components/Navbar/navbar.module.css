@@ -1,20 +1,29 @@
 .menu {
-    list-style: none;
+    position:  relative;
+    z-index: 999;
+
     display: flex;
     justify-content: center;
+    gap: 20px;
 
-    gap: 10px;
+    padding: 15px 0px;
+
+    background-color: #000;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: center;
+    align-items:  center;
 }
 
 .link {
-    padding: 5px 10px;
-    border: 1px solid black;
-    border-radius: 2px;
+    font-size: 25px;
+    font-weight: bold;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .link:global.active {
-    color: white;
-    background-color: black;
+    color: orange;
 }
