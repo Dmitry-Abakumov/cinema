@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
 
 import Reviews from 'components/Reviews/Reviews';
 
 import { fetchMovieReviews } from 'shared/services/movies-search-api';
 
+import css from './ReviewsPage.module.css';
+
 const RewiewsPage = () => {
   const [reviews, setReviws] = useState();
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const { movieId } = useParams();
@@ -20,7 +22,7 @@ const RewiewsPage = () => {
         const { results } = await fetchMovieReviews(movieId);
         setReviws(results);
       } catch ({ message }) {
-        setError(message);
+        toast.error('Oops, something went wrong. Try reloading the page');
       } finally {
         setIsLoading(false);
       }
@@ -31,17 +33,15 @@ const RewiewsPage = () => {
 
   return (
     <>
-      {isLoading && (
-        <TailSpin width="50" color="black" wrapperClass="spinner" />
-      )}
+      {isLoading && <TailSpin width="50" color="#fff" wrapperClass="spinner" />}
 
       <Reviews reviews={reviews} />
 
       {reviews?.length === 0 && !isLoading && (
-        <h2>Sorry, but there are no reviews for this movie.</h2>
+        <h2 className={css.message}>
+          Sorry, but there are no reviews for this movie.
+        </h2>
       )}
-
-      {error && <p>{error}</p>}
     </>
   );
 };

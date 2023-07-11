@@ -1,53 +1,55 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
 
 import Movies from 'shared/components/Movies/Movies';
 import MoviesPageForm from 'components/MoviesPageForm/MoviesPageForm';
 
 import { fetchMoviesByName } from 'shared/services/movies-search-api';
 
+import css from './MoviesPage.module.css';
+
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const onSubmit = query => {
+    if (query === currentQuery)
+      return toast.warn('Search for this query has already been completed');
+
     setSearchParams({ query });
   };
 
-  const query = searchParams.get('query');
+  const currentQuery = searchParams.get('query');
 
   useEffect(() => {
-    if (!query) return;
+    if (!currentQuery) return;
 
     const searchMovieByName = async () => {
       try {
         setIsLoading(true);
-        const { results } = await fetchMoviesByName(query);
+        const { results } = await fetchMoviesByName(currentQuery);
         setMovies(results);
       } catch ({ message }) {
-        setError(message);
+        toast.error('Oops, something went wrong. Try reloading the page');
       } finally {
         setIsLoading(false);
       }
     };
 
     searchMovieByName();
-  }, [query]);
+  }, [currentQuery]);
 
   return (
-    <>
-      {isLoading && (
-        <TailSpin width="50" color="black" wrapperClass="spinner" />
-      )}
-
+    <div className={css.moviesWrap}>
       <MoviesPageForm onSubmit={onSubmit} />
-      <Movies movies={movies} />
 
-      {error && <p>{error}</p>}
-    </>
+      {isLoading && <TailSpin width="50" color="#fff" wrapperClass="spinner" />}
+
+      <Movies movies={movies} />
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { BsSearch } from 'react-icons/bs';
 
 import css from './movies-page-form.module.css';
 
@@ -22,14 +22,18 @@ const MoviesPageForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={onFormSubmit} className={css.form}>
-      <input onChange={onChange} type="text" value={query} />
-      <button type="submit">Search</button>
+      <input
+        className={css.input}
+        onChange={onChange}
+        type="text"
+        value={query}
+        placeholder="Type movie"
+      />
+      <button className={css.searchBtn} type="submit">
+        <BsSearch size="16px" color="#fff" />
+      </button>
     </form>
   );
 };
 
 export default MoviesPageForm;
-
-MoviesPageForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

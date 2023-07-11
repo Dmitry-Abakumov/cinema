@@ -1,13 +1,62 @@
-.filmInfoTitle {
-    font-weight: bold;
+.filmInfoWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding: 25px 20px;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
-.filmInfoWrapper {
-    margin-left: 10px;
+.contentWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
 }
 
-.detailsWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.textInfoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.overview {
+  font-weight: bold;
+  text-align: justify;
+  color: darkred;
+  padding: 15px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 40px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.img {
+  border-radius: 10px;
+}
+
+.info {
+  font-weight: bold;
+  max-width: 300px;
+  color: darkred;
+}
+
+@media screen and (max-width: 700px) {
+  .img {
+    width: 150px;
+  }
+
+  .contentWrap {
+    max-width: 450px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
 }

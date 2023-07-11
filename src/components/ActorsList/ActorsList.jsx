@@ -1,22 +1,23 @@
-import PropTypes from 'prop-types';
-
 import css from './actors-list.module.css';
 
-import defaultImg from 'shared/images/avatar-male.jpg';
+import defaultImg from 'shared/images/avatar.png';
 
 const ActorsList = ({ cast }) => {
   const castList = cast.map(({ profile_path, name, character, credit_id }) => (
-    <li key={credit_id}>
+    <li className={css.actorCard} key={credit_id}>
       <img
+        className={css.img}
         src={
           profile_path
             ? `https://image.tmdb.org/t/p/w200${profile_path}`
             : defaultImg
         }
-        alt=""
+        alt="actor"
       />
-      <p>{name}</p>
-      <p>{character}</p>
+      <div className={css.actorInfoWrap}>
+        <p className={css.text}>{name}</p>
+        <p className={css.text}>Role: {character}</p>
+      </div>
     </li>
   ));
   return <ul className={css.list}>{castList}</ul>;
@@ -26,15 +27,4 @@ export default ActorsList;
 
 ActorsList.defaultProps = {
   cast: [],
-};
-
-ActorsList.propTypes = {
-  cast: PropTypes.arrayOf(
-    PropTypes.shape({
-      profile_path: PropTypes.string,
-      name: PropTypes.string.isRequired,
-      character: PropTypes.string.isRequired,
-      credit_id: PropTypes.string.isRequired,
-    })
-  ),
 };

@@ -1,40 +1,45 @@
 import { Link, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+import defaultPoster from 'shared/images/default-movie.jpg';
+
+import css from './Movies.module.css';
 
 const Movies = ({ movies }) => {
   const location = useLocation();
+  console.log(movies);
 
-  const moviesList = movies.map(
-    ({ id, title, belongs_to_collection: name }) => (
-      <li key={id}>
-        <Link to={`/movies/${id}`} state={{ from: location }}>
-          {title || name}
-        </Link>
-      </li>
-    )
-  );
+  const moviesList = movies.map(({ id, title, poster_path, release_date }) => (
+    <li className={css.movie} key={id}>
+      <Link
+        className={css.link}
+        to={`/movies/${id}`}
+        state={{ from: location }}
+      >
+        <img
+          className={css.img}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w300${poster_path}`
+              : defaultPoster
+          }
+          alt="poster"
+        />
+        <div className={css.filmInfoWrap}>
+          <p className={css.text}>{title}</p>
+          <p className={css.text}>{`Release data: ${release_date.replaceAll(
+            '-',
+            '.'
+          )}`}</p>
+        </div>
+      </Link>
+    </li>
+  ));
 
-  return (
-    <div className="wrapper">
-      <ul>{moviesList}</ul>
-    </div>
-  );
+  return <ul className={css.moviesWrap}>{moviesList}</ul>;
 };
 
 export default Movies;
 
 Movies.defaultProps = {
   movies: [],
-};
-
-Movies.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      belongs_to_collection: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }),
-    })
-  ).isRequired,
 };

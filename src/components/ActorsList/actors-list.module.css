@@ -1,7 +1,40 @@
 .list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+
+.img {
+  border-radius: 10px;
+  max-width: 200px;
+}
+
+.actorCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  padding: 25px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  min-height: 420px;
+}
+
+.actorInfoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.text {
+  font-weight: bold;
+  color: darkred;
+  max-width: 200px;
+  text-align: center;
 }

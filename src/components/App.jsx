@@ -1,7 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import { TailSpin } from 'react-loader-spinner';
 
 import Navbar from 'components/Navbar/Navbar';
+
+import css from './App.module.css';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
@@ -15,9 +18,11 @@ const HitMoviesPage = lazy(() => import('pages/HitMoviesPage/HitMoviesPage'));
 
 export const App = () => {
   return (
-    <>
+    <div className={css.wrap}>
       <Navbar />
-      <Suspense>
+      <Suspense
+        fallback={<TailSpin width="50" color="#000" wrapperClass="spinner" />}
+      >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/hits" element={<HitMoviesPage />} />
@@ -29,6 +34,6 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 };

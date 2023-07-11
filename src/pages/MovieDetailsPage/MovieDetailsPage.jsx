@@ -1,7 +1,9 @@
 import { useParams, useLocation, useNavigate, Outlet } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { TailSpin } from 'react-loader-spinner';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { TbArrowBackUp } from 'react-icons/tb';
+import { toast } from 'react-toastify';
 
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 
@@ -11,7 +13,6 @@ import { fetchMovieById } from 'shared/services/movies-search-api';
 
 const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState();
-  const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState();
 
   const { movieId } = useParams();
@@ -28,7 +29,7 @@ const MovieDetailsPage = () => {
         const data = await fetchMovieById(movieId);
         setMovieDetails(data);
       } catch ({ message }) {
-        setError(message);
+        toast.error('Oops, something went wrong. Try reloading the page');
       } finally {
         setIsLoading(false);
       }
@@ -38,10 +39,8 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   return (
-    <>
-      {isLoading && (
-        <TailSpin width="50" color="black" wrapperClass="spinner" />
-      )}
+    <div className={css.wrap}>
+      {isLoading && <TailSpin width="50" color="#fff" wrapperClass="spinner" />}
 
       <button
         className={css.navigationBtn}
@@ -52,21 +51,23 @@ const MovieDetailsPage = () => {
         }
         type="button"
       >
-        Go back
+        <TbArrowBackUp size="30px" color="#fff" />
       </button>
       <MovieDetails movieInfo={movieDetails} />
-      <ul>
+      <ul className={css.navLinkList}>
         <li>
-          <Link to="cast">Cast</Link>
+          <NavLink className={css.navLink} to="cast">
+            Cast
+          </NavLink>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <NavLink className={css.navLink} to="reviews">
+            Reviews
+          </NavLink>
         </li>
       </ul>
       <Outlet />
-
-      {error && <p>{error}</p>}
-    </>
+    </div>
   );
 };
 

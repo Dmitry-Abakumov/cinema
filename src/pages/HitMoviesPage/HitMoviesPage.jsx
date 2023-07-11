@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
 
 import Movies from 'shared/components/Movies/Movies';
 
@@ -10,7 +11,6 @@ import css from './HitMoviesPage.module.css';
 const HitMoviesPage = () => {
   const [initialMovies, setInitialMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchInitialFilms = async () => {
@@ -19,7 +19,7 @@ const HitMoviesPage = () => {
         const data = await fetchTrendingMovies();
         setInitialMovies(data.results);
       } catch ({ message }) {
-        setError(message);
+        toast.error('Oops, something went wrong. Try reloading the page');
       } finally {
         setIsLoading(false);
       }
@@ -30,14 +30,10 @@ const HitMoviesPage = () => {
 
   return (
     <div className={css.wrap}>
-      <h2>Trending today</h2>
-      {isLoading && (
-        <TailSpin width="50" color="black" wrapperClass="spinner" />
-      )}
+      <h2 className={css.title}>Trending today</h2>
+      {isLoading && <TailSpin width="50" color="#fff" wrapperClass="spinner" />}
 
       <Movies movies={initialMovies} />
-
-      {error && <p>{error}</p>}
     </div>
   );
 };
