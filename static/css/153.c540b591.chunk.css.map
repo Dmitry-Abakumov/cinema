@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/153.c540b591.chunk.css","mappings":"AAAA,2BAGI,wBAAyB,CADzB,WAAY,CADZ,UAGJ","sources":["pages/HitMoviesPage/HitMoviesPage.module.css"],"sourcesContent":[".wrap {\n    width: 100%;\n    height: 100%;\n    background-color: darkred;\n}"],"names":[],"sourceRoot":""}
