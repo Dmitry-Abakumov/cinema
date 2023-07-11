@@ -1,0 +1,15 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+
+  width: 100%;
+  min-height: 800px;
+  padding: 0px 15px;
+
+  font-size: 25px;
+
+  color: #fff;
+  background-color: darkred;
+}

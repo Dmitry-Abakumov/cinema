@@ -4,8 +4,6 @@ import { TailSpin } from 'react-loader-spinner';
 
 import Navbar from 'components/Navbar/Navbar';
 
-import css from './App.module.css';
-
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(() =>
@@ -18,7 +16,7 @@ const HitMoviesPage = lazy(() => import('pages/HitMoviesPage/HitMoviesPage'));
 
 export const App = () => {
   return (
-    <div className={css.wrap}>
+    <div>
       <Navbar />
       <Suspense
         fallback={<TailSpin width="50" color="#000" wrapperClass="spinner" />}
