@@ -15,4 +15,4 @@ Used technologies and libraries:
 4. CSS modules
 5. Axios
 
-Link to live page:
+Link to live page: dmitry-abakumov.github.io/cinema/
