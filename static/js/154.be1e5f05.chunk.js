@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcinema=self.webpackChunkcinema||[]).push([[154],{9154:function(e,n,r){r.r(n),r.d(n,{default:function(){return t}});var a="NotFoundPage_wrap__jRZl7",s=r(184),t=function(){return(0,s.jsx)("div",{className:a,children:(0,s.jsx)("h1",{children:"Sorry, but there is no page at this address "})})}}}]);
+//# sourceMappingURL=154.be1e5f05.chunk.js.map
