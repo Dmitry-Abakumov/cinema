@@ -1,6 +1,6 @@
 import defaultImg from 'shared/images/default-movie.jpg';
 
-import css from './movie-details.module.css';
+import css from './MovieDetails.module.css';
 
 const MovieDetails = ({ movieInfo }) => {
   return (

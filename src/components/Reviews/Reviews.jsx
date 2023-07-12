@@ -1,4 +1,4 @@
-import css from './reviews.module.css';
+import css from './Reviews.module.css';
 
 const Reviews = ({ reviews }) => {
   const movieReviews = reviews.map(({ author, content, id }) => (

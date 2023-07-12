@@ -1,4 +1,4 @@
-import css from './actors-list.module.css';
+import css from './ActorsList.module.css';
 
 import defaultImg from 'shared/images/avatar.png';
 

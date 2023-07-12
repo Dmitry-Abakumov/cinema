@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 
-import css from './movie-details-page.module.css';
+import css from './MovieDetailsPage.module.css';
 
 import { fetchMovieById } from 'shared/services/movies-search-api';
 

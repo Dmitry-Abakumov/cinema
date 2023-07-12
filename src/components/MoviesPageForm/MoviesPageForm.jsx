@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 
-import css from './movies-page-form.module.css';
+import css from './MoviesPageForm.module.css';
 
 const MoviesPageForm = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
