@@ -1,4 +1,4 @@
-Hello it`s React multipage app;ication - "Cinema".
+Hello it`s a React application - "Cinema".
 
 With it, you can:
 
