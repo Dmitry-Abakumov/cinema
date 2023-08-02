@@ -1,4 +1,4 @@
-Hello it`s a React application - "Cinema".
+Hello it`s an React application - "Cinema".
 
 With it, you can:
 
